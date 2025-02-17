@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Sense - by Hengki Dev</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC/UlEQVR4AWJwL/ABtF0HYRjX9ft7SrKjW5aprCyr9957WmVn773LUNl7lpGZ7DAzFe89Uuk+Sb/vvkR0k8sSGL6DB3g+xwXgP4z+ZPZxWoGzXYFr8PahApK5AneYAqkXCVxmCOT9W+AplkDeQoHXnALFfwqEuQRSZgv8YBfInyfwnitQ+rvAL06BZ90CZb8LpMwRKJgl0PsXgSyXQNocgXqPQKxb4N1AgepfBd51C6TOE/jBEiiaJ5DpFkiZL1A+V6B2jsAXPi2QMFugbZ5A0nyB76YLzDUF+ucKvGQLvDtVoG6+QIAp8KpDoHGqQJxDoHKBwOdTBPLdAp3TBBLdAukLBb6eItDoEWgPEHjPFhieIpDnFkibKVD+m0DjYoGPnQKZiwSmewSSpwt8YwmM/CLQ6BZ4wRYoXSxQMV/gE7dA/BSBknkCtfMFLnQLfL9EoNkj8JFdoGuJQMU8gVdsgfQlAg2zBeJtgbIlAtVugU+cAplLBb52CQwuEfjSIxBnCrQ4BbKWCjxqC6R7BF50CuQtE6hYJvDZZIHspQLXmQIPTxKo9wiULhd4ySPw5XKBZx0CwcsEMpcJpE8WiF0uUGULvLtM4PPlAvEugZtWCLxpCxSuEHjSKRCyQqDKI/DlSoFPnQKPrxD4bIXA0EqBr5wCz3gE3lopMOgUeMQSeMIp8MxKgYJVAgNOgRSnwHurBG5wChSuEvjQKZDkFKhaJfCJU+CDVQJfOQXyVwm87RR4ebXA506BT9cIJK0R+GKNwBdOgeQ1AsmrBS5bI5DmFIhbK3CPUyB+jUDWWoHrnAKvrxGo9gg87hRI9wjc7xSoXyvwkS1QsVbgdadAklOgbK3AoFvgfafArWsFLloncKFH4CmnwO32/7aqDU6B59YLPGIJnLdO4BanwF0bBC7ZIPCcUyBmg8BTToE7Nwq86BR4fIPAe06B5zYIvOwUGN4okOAUeHGjwBArgXM2Cry3UeDZTQKvOAXu2CTwllPg1U0Cd28SqHUKvL9J4LlNAiNOgR82C9y9WeBNp8DPk/4XAAD//2Bm1xPQxNE2AAAAAElFTkSuQmCC">
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC/UlEQVR4AWJwL/ABtF0HYRjX9ft7SrKjW5aprCyr9957WmVn773LUNl7lpGZ7DAzFe89Uuk+Sb/vvkR0k8sSGL6DB3g+xwXgP4z+ZPZxWoGzXYFr8PahApK5AneYAqkXCVxmCOT9W+AplkDeQoHXnALFfwqEuQRSZgv8YBfInyfwnitQ+rvAL06BZ90CZb8LpMwRKJgl0PsXgSyXQNocgXqPQKxb4N1AgepfBd51C6TOE/jBEiiaJ5DpFkiZL1A+V6B2jsAXPi2QMFugbZ5A0nyB76YLzDUF+ucKvGQLvDtVoG6+QIAp8KpDoHGqQJxDoHKBwOdTBPLdAp3TBBLdAukLBb6eItDoEWgPEHjPFhieIpDnFkibKVD+m0DjYoGPnQKZiwSmewSSpwt8YwmM/CLQ6BZ4wRYoXSxQMV/gE7dA/BSBknkCtfMFLnQLfL9EoNkj8JFdoGuJQMU8gVdsgfQlAg2zBeJtgbIlAtVugU+cAplLBb52CQwuEfjSIxBnCrQ4BbKWCjxqC6R7BF50CuQtE6hYJvDZZIHspQLXmQIPTxKo9wiULhd4ySPw5XKBZx0CwcsEMpcJpE8WiF0uUGULvLtM4PPlAvEugZtWCLxpCxSuEHjSKRCyQqDKI/DlSoFPnQKPrxD4bIXA0EqBr5wCz3gE3lopMOgUeMQSeMIp8MxKgYJVAgNOgRSnwHurBG5wChSuEvjQKZDkFKhaJfCJU+CDVQJfOQXyVwm87RR4ebXA506BT9cIJK0R+GKNwBdOgeQ1AsmrBS5bI5DmFIhbK3CPUyB+jUDWWoHrnAKvrxGo9gg87hRI9wjc7xSoXyvwkS1QsVbgdadAklOgbK3AoFvgfafArWsFLloncKFH4CmnwO32/7aqDU6B59YLPGIJnLdO4BanwF0bBC7ZIPCcUyBmg8BTToE7Nwq86BR4fIPAe06B5zYIvOwUGN4okOAUeHGjwBArgXM2Cry3UeDZTQKvOAXu2CTwllPg1U0Cd28SqHUKvL9J4LlNAiNOgR82C9y9WeBNp8DPk/4XAAD//2Bm1xPQxNE2AAAAAElFTkSuQmCC">
+    <meta name="theme-color" content="#4158D0">
+
+    <!-- Font Awesome dan Font -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animasi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+            <div class="brand-text">
+                <h1>Weather Sense</h1>
+                <p>by Hengki Dev</p>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Enter city name..." id="search-input">
+            <button onclick="searchWeather()">
+                <i class="fas fa-search"></i> Search
+            </button>
+            <button onclick="getLocation()">
+                <i class="fas fa-location-dot"></i> Use Location
+            </button>
+        </div>
+
+        <div class="loading">
+            <i class="fas fa-spinner fa-spin"></i> Loading weather data...
+        </div>
+        <div class="error-message"></div>
+
+        <div class="weather-info">
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="location-text"></span>
+            </div>
+            <div class="temp">
+                <span id="temperature"></span>°C
+            </div>
+            <div id="weather-description"></div>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <i class="fas fa-wind"></i>
+                    <div>Wind Speed</div>
+                    <div id="wind-speed"></div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-tint"></i>
+                    <div>Humidity</div>
+                    <div id="humidity"></div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-cloud"></i>
+                    <div>Cloud Cover</div>
+                    <div id="cloud-cover"></div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <div>Pressure</div>
+                    <div id="pressure"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>

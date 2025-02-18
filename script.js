@@ -1,4 +1,4 @@
-const API_KEY = 'c54ff25d4cc322964bd219065fc2742d'; // Ganti dengan API key Anda
+const API_KEY = 'bf3d77db36fa33e22035dd8e1bb8bf98'; // Ganti dengan API key Anda
         const weatherInfo = document.querySelector('.weather-info');
         const errorMessage = document.querySelector('.error-message');
         const loading = document.querySelector('.loading');
